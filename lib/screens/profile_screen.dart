@@ -1,6 +1,5 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'dart:io'; 
 import '../main.dart';
 
 class LayarProfil extends StatelessWidget {
@@ -61,11 +60,30 @@ class LayarProfil extends StatelessWidget {
                         foregroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        if (Platform.isAndroid) {
-                          SystemNavigator.pop();
-                        } else if (Platform.isIOS) {
-                          exit(0);
-                        }
+                       
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Konfirmasi'),
+                              content: Text('Apakah Anda yakin mau keluar?'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop(); 
+                                  },
+                                  child: Text('Tidak'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    exit(0); 
+                                  },
+                                  child: Text('Ya'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
                       },
                       child: Text('Keluar'),
                     ),

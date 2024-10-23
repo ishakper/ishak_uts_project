@@ -102,10 +102,22 @@ class _LayarDaftarState extends State<LayarDaftar> {
                         foregroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        setState(() {
-                          namaPengguna = namaController.text;
-                        });
-                        Navigator.pushNamed(context, '/success');
+                        if (passwordController.text == confirmPasswordController.text) {
+                          setState(() {
+                            namaPengguna = namaController.text;
+                            registeredUsers.add(User(
+                              name: namaPengguna,
+                              email: emailController.text,
+                              password: passwordController.text,
+                            ));
+                          });
+                          Navigator.pushNamed(context, '/success');
+                        } else {
+                          // Tampilkan pesan kesalahan jika kata sandi tidak cocok
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Kata sandi tidak cocok!')),
+                          );
+                        }
                       },
                       child: Text('Daftar', style: TextStyle(fontSize: 18)),
                     ),

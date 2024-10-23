@@ -23,16 +23,42 @@ class LayarSelamatDatang extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Card(
-              elevation: 8,
+              elevation: 10,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.circular(20),
               ),
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
-                child: Text(
-                  'Selamat Datang, $namaPengguna',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.check_circle,
+                      color: Colors.green,
+                      size: 100,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Selamat Datang Bro!',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueAccent,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'WOYY..$namaPengguna!',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black54,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20),
+                    CircularProgressIndicator(),
+                  ],
                 ),
               ),
             ),

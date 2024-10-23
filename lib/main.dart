@@ -30,3 +30,13 @@ class AplikasiSaya extends StatelessWidget {
 }
 
 String namaPengguna = '';
+
+List<User> registeredUsers = [];
+
+class User {
+  final String name;
+  final String email;
+  final String password;
+
+  User({required this.name, required this.email, required this.password});
+}

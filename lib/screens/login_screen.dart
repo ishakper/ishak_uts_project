@@ -1,6 +1,21 @@
 import 'package:flutter/material.dart';
 
-class LayarLogin extends StatelessWidget {
+class LayarLogin extends StatefulWidget {
+  @override
+  _LayarLoginState createState() => _LayarLoginState();
+}
+
+class _LayarLoginState extends State<LayarLogin> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+ 
+  final String emailValid = 'ishakhadipernama@gmail.com';
+  final String passwordValid = '12345';
+
+  
+  String errorMessage = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +47,7 @@ class LayarLogin extends StatelessWidget {
                     ),
                     SizedBox(height: 20),
                     TextField(
+                      controller: emailController,
                       decoration: InputDecoration(
                         labelText: 'Email',
                         border: OutlineInputBorder(
@@ -43,6 +59,7 @@ class LayarLogin extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     TextField(
+                      controller: passwordController,
                       decoration: InputDecoration(
                         labelText: 'Kata Sandi',
                         border: OutlineInputBorder(
@@ -53,6 +70,13 @@ class LayarLogin extends StatelessWidget {
                       ),
                       obscureText: true,
                     ),
+                    SizedBox(height: 10),
+                    
+                    if (errorMessage.isNotEmpty)
+                      Text(
+                        errorMessage,
+                        style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                      ),
                     SizedBox(height: 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -60,11 +84,21 @@ class LayarLogin extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        backgroundColor: Colors.blueAccent, // Updated property
-                        foregroundColor: Colors.white, // Updated property
+                        backgroundColor: Colors.blueAccent,
+                        foregroundColor: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.pushNamed(context, '/welcome');
+                        
+                        if (emailController.text == emailValid &&
+                            passwordController.text == passwordValid) {
+                          
+                          Navigator.pushNamed(context, '/welcome');
+                        } else {
+                          
+                          setState(() {
+                            errorMessage = 'Email atau kata sandi salah!';
+                          });
+                        }
                       },
                       child: Text('Masuk', style: TextStyle(fontSize: 18)),
                     ),
