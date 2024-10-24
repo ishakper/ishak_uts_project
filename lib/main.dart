@@ -4,6 +4,7 @@ import 'screens/register_screen.dart';
 import 'screens/welcome_screen.dart';
 import 'screens/success_screen.dart';
 import 'screens/profile_screen.dart';
+import 'screens/dashboard_screen.dart'; // Import the Dashboard screen
 
 void main() => runApp(AplikasiSaya());
 
@@ -14,24 +15,26 @@ class AplikasiSaya extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Alur Autentikasi',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red, // Use red as the primary color
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: '/',
+      initialRoute: '/login', // Set initial route to login
       routes: {
-        '/': (context) => LayarLogin(),
+        '/': (context) => LayarSelamatDatang(), // Welcome screen
+        '/login': (context) => LayarLogin(),
         '/register': (context) => LayarDaftar(),
         '/success': (context) => LayarPendaftaranBerhasil(),
         '/profile': (context) => LayarProfil(),
         '/welcome': (context) => LayarSelamatDatang(),
+        '/dashboard': (context) => LayarDashboard(), // Dashboard route
       },
     );
   }
 }
 
-String namaPengguna = '';
+String namaPengguna = ''; // Global variable to store username
 
-List<User> registeredUsers = [];
+List<User> registeredUsers = []; // List to store registered users
 
 class User {
   final String name;

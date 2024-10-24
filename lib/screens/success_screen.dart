@@ -7,7 +7,7 @@ class LayarPendaftaranBerhasil extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blueAccent, Colors.cyan],
+            colors: [Colors.redAccent, Colors.red],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

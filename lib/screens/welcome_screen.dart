@@ -6,7 +6,7 @@ class LayarSelamatDatang extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Future.delayed(Duration(seconds: 2), () {
-        Navigator.pushNamed(context, '/profile');
+        Navigator.pushNamed(context, '/dashboard');
       });
     });
 
@@ -48,7 +48,7 @@ class LayarSelamatDatang extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     Text(
-                      'WOYY..$namaPengguna!',
+                      'WOYY.. $namaPengguna!',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w500,
@@ -68,3 +68,5 @@ class LayarSelamatDatang extends StatelessWidget {
     );
   }
 }
+
+
